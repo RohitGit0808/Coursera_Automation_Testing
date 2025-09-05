@@ -1,0 +1,196 @@
+<project xmlns="https://maven.apache.org/POM/4.0.0" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.identifycourses</groupId>
+  <artifactId>IdentifyCourses</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+  <properties> 
+  	<selenium.version>4.34.0</selenium.version>
+    <testng.version>7.11.0</testng.version>
+  	<apache.poi.version>5.4.1</apache.poi.version>
+  	<webdrivermanager.version>6.2.0</webdrivermanager.version>
+  	<log4j-core.version>2.25.1</log4j-core.version>
+  	<log4j-api.version>2.25.1</log4j-api.version>
+  	<log4j-slf4j2-impl.version>2.25.1</log4j-slf4j2-impl.version>
+  </properties>
+  
+  <dependencies>
+  <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+	<dependency>
+	    <groupId>org.seleniumhq.selenium</groupId>
+	    <artifactId>selenium-java</artifactId>
+	    <version>${selenium.version}</version>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/org.testng/testng -->
+	<dependency>
+	    <groupId>org.testng</groupId>
+	    <artifactId>testng</artifactId>
+	    <version>${testng.version}</version>
+	    <scope>test</scope>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
+	<dependency>
+	    <groupId>org.apache.poi</groupId>
+	    <artifactId>poi</artifactId>
+	    <version>${apache.poi.version}</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.apache.poi</groupId>
+	    <artifactId>poi-ooxml</artifactId>
+	    <version>${apache.poi.version}</version>
+	</dependency>
+
+	
+	<!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
+	<dependency>
+	    <groupId>io.github.bonigarcia</groupId>
+	    <artifactId>webdrivermanager</artifactId>
+	    <version>${webdrivermanager.version}</version>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+	<dependency>
+	    <groupId>org.apache.logging.log4j</groupId>
+	    <artifactId>log4j-core</artifactId>
+	    <version>${log4j-core.version}</version>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api -->
+	<dependency>
+	    <groupId>org.apache.logging.log4j</groupId>
+	    <artifactId>log4j-api</artifactId>
+	    <version>${log4j-api.version}</version>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-slf4j2-impl -->
+	<dependency>
+	    <groupId>org.apache.logging.log4j</groupId>
+	    <artifactId>log4j-slf4j2-impl</artifactId>
+	    <version>${log4j-slf4j2-impl.version}</version>
+	    <scope>compile</scope>
+	</dependency>
+	
+	<!-- Cucumber Core -->
+	<dependency>
+	    <groupId>io.cucumber</groupId>
+	    <artifactId>cucumber-java</artifactId>
+	    <version>7.14.0</version>
+	</dependency>
+	
+	<!-- Cucumber TestNG -->
+	<dependency>
+	    <groupId>io.cucumber</groupId>
+	    <artifactId>cucumber-testng</artifactId>
+	    <version>7.14.0</version>
+	    <scope>test</scope>
+	</dependency>
+	
+	<!-- Cucumber JUnit -->
+	<dependency>
+	    <groupId>io.cucumber</groupId>
+	    <artifactId>cucumber-junit</artifactId>
+	    <version>7.14.0</version>
+	    <scope>test</scope>
+	</dependency>
+	
+	<!-- JUnit -->
+	<dependency>
+	    <groupId>junit</groupId>
+	    <artifactId>junit</artifactId>
+	    <version>4.13.2</version>
+	    <scope>test</scope>
+	</dependency>
+	
+	
+	<!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-cucumber7-jvm -->
+		<dependency>
+			<groupId>io.qameta.allure</groupId>
+			<artifactId>allure-cucumber7-jvm</artifactId>
+			<version>2.29.0</version>
+			<scope>test</scope>
+		</dependency>
+		
+	<!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-testng -->
+		<dependency>
+			<groupId>io.qameta.allure</groupId>
+			<artifactId>allure-testng</artifactId>
+			<version>2.29.0</version>
+			<scope>test</scope>
+		</dependency>
+		
+    <!-- https://mvnrepository.com/artifact/net.masterthought/maven-cucumber-reporting -->
+	<dependency>
+	    <groupId>net.masterthought</groupId>
+	    <artifactId>maven-cucumber-reporting</artifactId>
+	    <version>5.9.0</version>
+	</dependency>		
+
+  </dependencies>
+  
+  <build>
+  	<plugins>
+  	
+  		<plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.13.0</version>
+          <configuration>
+            <source>11</source>
+            <target>11</target>
+          </configuration>
+        </plugin>
+        
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>3.5.3</version>
+          <configuration>
+          	<suiteXmlFiles>
+          		<suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
+          	</suiteXmlFiles>
+          </configuration>
+        </plugin>
+        
+      <plugin> 
+        <groupId>io.qameta.allure</groupId> 
+        <artifactId>allure-maven</artifactId> 
+        <version>2.15.2</version> 
+        <configuration> 
+          <reportVersion>2.15.2</reportVersion> 
+        </configuration> 
+      </plugin> 
+      
+      <plugin>
+        <groupId>net.masterthought</groupId>
+        <artifactId>maven-cucumber-reporting</artifactId>
+        <version>5.9.0</version>
+ 
+        <executions>
+          <execution>
+            <id>generate-cucumber-report</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+            <configuration>
+              <projectName>Cucumber Reporting Example</projectName>
+              <outputDirectory>target/cucumber-html-reports</outputDirectory>
+              <inputDirectory>target</inputDirectory>
+              <jsonFiles>
+                <!-- Include both main and rerun JSON reports -->
+                <param>target/cucumber-reports/cucumber-report.json</param>
+                <param>target/cucumber-reports/cucumber-rerun-report.json</param>
+                <param>**/*.json</param>
+              </jsonFiles>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+        
+  	</plugins>
+  </build>
+  
+</project>
